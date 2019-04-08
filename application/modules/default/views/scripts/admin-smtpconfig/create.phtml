@@ -1,0 +1,173 @@
+<style>
+fieldset {
+    margin: 10px 0;
+    padding: 10px;
+    border-top: 1px solid #D7D7D7;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    border-left: 1px solid #D7D7D7;
+    background-color: #FFFFFF;
+    position: relative;
+}
+legend {
+    padding: 1px 5px;
+    font-family: Tahoma,arial,Verdana,Sans-serif;
+    font-size: .9em;
+    font-weight: bold;
+    color: #115098;
+    margin-top: -.4em;
+    position: relative;
+    text-transform: none;
+    line-height: 1.2em;
+    top: 0;
+    vertical-align: middle;
+	border-bottom:none;
+	width:auto !important;
+	margin-bottom:5px !important;
+}
+fieldset dl {
+    margin-bottom: 10px;
+    font-size: 0.85em;
+}
+fieldset dt {
+    width: 20%;
+    text-align: left;
+    border: none;
+    padding-top: 3px;
+    float: left;
+}
+fieldset dd {
+    margin: 0 0 0 20%;
+    padding: 0 0 0 5px;
+    border: none;
+    border-left: 1px solid #CCCCCC;
+    vertical-align: top;
+    font-size: 1.00em;
+}
+
+.tbl-grid {
+    border-collapse: collapse;
+}
+tabbable table {
+    width: 100%;
+    border: 1px solid #CCCFD3;
+    background-color: #FFFFFF;
+    padding: 1px;
+}
+.tbl-grid tr td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+.row1 {
+    background-color: #F9F9F9;
+}
+.row2 {
+    background-color: #DCEBFE;
+}
+
+</style>
+
+<h2 style="font-size: 16px;font-weight: bold;">Khai báo danh mục » Danh mục sự kiện » Danh sách sự kiện » Thêm mới</h2>
+<hr style="width:100%;clear:both;"/>
+
+<form id="edititem" method="post" action="/admin/events/create2" enctype="multipart/form-data" class="validate-form">
+<div class="col-md-6 col-sm-6 col-xs-12">
+<fieldset>
+    <legend>Thông tin cơ bản(*):</legend>
+	<table style="width:100%;">
+	<tr>
+	<td style="width: 30%;"><label for="txtTensukien" style="font-weight:bold;">Tên sự kiện(*):</label></td>
+	<td><input style="width: 99%;" class="form-control" required name="txtTensukien" value="" maxlength="255" type="text"></td>
+	</tr>
+	<tr>
+	<td style="width: 30%;"><label for="txtUrl" style="font-weight:bold;">Url(*):</label></td>
+	<td><input style="width: 99%;margin:10px 0 0 0;" required class="form-control" name="txtUrl" value="" maxlength="255" type="text"></td>
+	</tr>
+	<tr>
+	<td style="width: 30%;"><label for="txtNgaybatdau" style="font-weight:bold;">Ngày bắt đầu(*):</label></td>
+	<td>	
+	<div class="input-group" style="width: 99%;margin:10px 0 0 0;">
+				<input id="id-date-picker-1" class="form-control date-picker" required name="date" type="text" data-date-format="dd/mm/yyyy" placeholder="Chọn thời gian" value="">
+				<span class="input-group-addon">
+					<i class="fa fa-calendar bigger-110"></i>
+				</span>
+			</div>
+	</td>
+	</tr>
+	<tr>
+	<td style="width: 30%;"><label for="txtNgayketthuc" style="font-weight:bold;">Ngày kết thúc(*):</label></td>
+	<td>
+	<div class="input-group" style="width: 99%;margin:10px 0 0 0;">
+				<input id="id-date-picker-2" class="form-control date-picker" required name="date2" type="text" data-date-format="dd/mm/yyyy" placeholder="Chọn thời gian" value="">
+				<span class="input-group-addon">
+					<i class="fa fa-calendar bigger-110"></i>
+				</span>
+			</div>
+	</td>
+	</tr>
+	</table>    	
+</fieldset>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-12">
+<fieldset>
+    <legend>Địa điểm</legend>
+	<table style="width:100%;">
+	<tr>
+	<td style="width: 30%;"><label for="txtDiadiemtochuc" style="font-weight:bold;">Địa điểm tổ chức:</label></td>
+	<td><input style="width: 99%;" class="form-control" name="txtDiadiemtochuc" value="" maxlength="255" type="text"></td>
+	</tr>
+	<tr>
+	<td style="width: 30%;"><label for="textarea_intro" style="font-weight:bold;">Địa chỉ:</label></td>
+	<td>
+	<textarea rows="5" cols="25" class="mceFull" id="textarea_intro" name="textarea_intro"
+        style="width: 99%;margin:10px 0 0 0;"></textarea>
+	</td>
+	</tr>	
+	</table>    	
+</fieldset>
+</div>
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+<fieldset>
+    <legend>Thông tin đơn vị tổ chức</legend>
+	<table style="width:100%;">
+	<tr>
+	<td style="width: 30%;"><label for="txtTendonvitochuc" style="font-weight:bold;">Tên đơn vị tổ chức:</label></td>
+	<td><input style="width: 99%;" class="form-control" name="txtTendonvitochuc" value="" maxlength="255" type="text"></td>
+	</tr>
+	<tr>
+	<td style="width: 30%;"><label for="txtTendaidien" style="font-weight:bold;">Người đại diện:</label></td>
+	<td><input style="width: 99%;margin:10px 0 0 0;" class="form-control" name="txtTendaidien" value="" maxlength="255" type="text"></td>
+	</tr>
+	<tr>
+	<td style="width: 30%;"><label for="txtEmaildvtochuc" style="font-weight:bold;">Email:</label></td>
+	<td>
+	<input style="width: 99%;margin:10px 0 0 0;" class="form-control" name="txtEmaildvtochuc" value="" maxlength="255" type="text">
+	</td>
+	</tr>	
+	<tr>
+	<td style="width: 30%;"><label for="txtPageFacebook" style="font-weight:bold;">Facebook page:</label></td>
+	<td>
+	<input style="width: 99%;margin:10px 0 0 0;" class="form-control" name="txtPageFacebook" value="" maxlength="255" type="text">
+	</td>
+	</tr>	
+	</table> 
+</fieldset>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-12">
+<fieldset>
+    <legend>Thông tin khác</legend>
+	<table style="width:100%;">
+	<tr>
+	<td style="width: 30%;"><label for="txtLoaisukien" style="font-weight:bold;">Loại sự kiện:</label></td>
+	<td><input style="width: 99%;" class="form-control" name="txtLoaisukien" value="" maxlength="255" type="text"></td>
+	</tr>	
+	</table> 
+</fieldset>
+</div>
+<div class="submit-buttons">
+    <p style="text-align:right;margin-right:10px;"><input style="cursor: pointer !important;" class="btn btn-primary" id="submit" name="update" value="Thêm mới" type="submit">
+    <input value="Insert" name="submit" type="hidden"></p>
+</div>
+</form>
+

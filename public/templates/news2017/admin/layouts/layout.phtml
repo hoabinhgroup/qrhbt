@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html>
+    <head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+    <!-- no cache headers -->
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="no-cache">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<!-- end no cache headers -->
+  
+   	 <title>Quản trị Admin</title>      
+   	 <?php echo $this->headTitle(); ?>
+   	 <?php echo $this->headMeta(); ?>   
+   	     	    
+		<link rel="stylesheet" href="/public/assets/css/bootstrap.css" />
+		<link rel="stylesheet" href="/public/assets/css/font-awesome.css" />
+
+		<!-- page specific plugin styles -->
+		<link rel="stylesheet" href="/public/assets/css/jquery-ui.custom.css" />
+		<link rel="stylesheet" href="/public/assets/css/chosen.css" />
+		<link rel="stylesheet" href="/public/assets/css/datepicker.css" />
+		<link rel="stylesheet" href="/public/assets/css/bootstrap-timepicker.css" />
+		<link rel="stylesheet" href="/public/assets/css/daterangepicker.css" />
+		<link rel="stylesheet" href="/public/assets/css/bootstrap-datetimepicker.css" />
+		<link rel="stylesheet" href="/public/assets/css/colorpicker.css" />
+		<link rel="stylesheet" href="/public/assets/css/custom_admin.css" />
+		<link rel="stylesheet" href="/public/assets/css/prettify.css" />
+
+
+		<!-- text fonts -->
+		<link rel="stylesheet" href="/public/assets/css/ace-fonts.css" />
+
+		<!-- ace styles -->
+		<link rel="stylesheet" href="/public/assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" href="/public/assets/css/ace-part2.css" class="ace-main-stylesheet" />
+		<![endif]-->
+
+		<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="/public/assets/css/ace-ie.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+	<?php echo $this->headLink(); ?>
+   	 <?php echo $this->headScript(); ?> 
+		<!-- ace settings handler -->
+		<script src="/public/assets/js/ace-extra.js"></script>
+	
+	<script>
+(function(w,d,s,g,js,fs){
+  g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
+  js=d.createElement(s);fs=d.getElementsByTagName(s)[0];
+  js.src='https://apis.google.com/js/platform.js';
+  fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
+}(window,document,'script'));
+</script>	
+	</head>
+	
+<body class="no-skin">
+			<!-- #section:basics/navbar.layout -->
+		<div id="navbar" class="navbar navbar-default    navbar-collapse       h-navbar">
+			<script type="text/javascript">
+				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+			</script>
+
+			<div class="navbar-container" id="navbar-container">
+				<div class="navbar-header pull-left">
+					<!-- #section:basics/navbar.layout.brand -->
+					<a href="#" class="navbar-brand">
+						<small>
+							<i class="fa fa-leaf"></i>
+							QR Code Admin
+						</small>
+					</a>
+
+					<!-- /section:basics/navbar.layout.brand -->
+
+					<!-- #section:basics/navbar.toggle -->
+					<button class="pull-right navbar-toggle navbar-toggle-img collapsed" type="button" data-toggle="collapse" data-target=".navbar-buttons,.navbar-menu">
+						<span class="sr-only">Toggle user menu</span>
+
+						<img src="http://qr.hoabinhtourist.com/public/assets/avatars/avatar.png" alt="Jason's Photo" />
+					</button>
+
+					<button class="pull-right navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#sidebar">
+						<span class="sr-only">Toggle sidebar</span>
+
+						<span class="icon-bar"></span>
+
+						<span class="icon-bar"></span>
+
+						<span class="icon-bar"></span>
+					</button>
+
+					<!-- /section:basics/navbar.toggle -->
+				</div>
+
+				<!-- #section:basics/navbar.dropdown -->
+				<div class="navbar-buttons navbar-header pull-right  collapse navbar-collapse" role="navigation">
+					<ul class="nav ace-nav">
+						<li class="transparent">
+							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
+							</a>
+
+							<div class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+								<div class="tabbable">
+									<ul class="nav nav-tabs">
+										<li class="active">
+											<a data-toggle="tab" href="#navbar-tasks">
+												Tasks
+												<span class="badge badge-danger">4</span>
+											</a>
+										</li>
+
+										<li>
+											<a data-toggle="tab" href="#navbar-messages">
+												Messages
+												<span class="badge badge-danger">5</span>
+											</a>
+										</li>
+									</ul><!-- .nav-tabs -->
+
+									<div class="tab-content">
+										<div id="navbar-tasks" class="tab-pane in active">
+											<ul class="dropdown-menu-right dropdown-navbar dropdown-menu">
+												<li class="dropdown-content">
+													<ul class="dropdown-menu dropdown-navbar">
+														<li>
+															<a href="#">
+																<div class="clearfix">
+																	<span class="pull-left">Software Update</span>
+																	<span class="pull-right">65%</span>
+																</div>
+
+																<div class="progress progress-mini">
+																	<div style="width:65%" class="progress-bar"></div>
+																</div>
+															</a>
+														</li>
+
+														<li>
+															<a href="#">
+																<div class="clearfix">
+																	<span class="pull-left">Hardware Upgrade</span>
+																	<span class="pull-right">35%</span>
+																</div>
+
+																<div class="progress progress-mini">
+																	<div style="width:35%" class="progress-bar progress-bar-danger"></div>
+																</div>
+															</a>
+														</li>
+
+														<li>
+															<a href="#">
+																<div class="clearfix">
+																	<span class="pull-left">Unit Testing</span>
+																	<span class="pull-right">15%</span>
+																</div>
+
+																<div class="progress progress-mini">
+																	<div style="width:15%" class="progress-bar progress-bar-warning"></div>
+																</div>
+															</a>
+														</li>
+
+														<li>
+															<a href="#">
+																<div class="clearfix">
+																	<span class="pull-left">Bug Fixes</span>
+																	<span class="pull-right">90%</span>
+																</div>
+
+																<div class="progress progress-mini progress-striped active">
+																	<div style="width:90%" class="progress-bar progress-bar-success"></div>
+																</div>
+															</a>
+														</li>
+													</ul>
+												</li>
+
+												<li class="dropdown-footer">
+													<a href="#">
+														See tasks with details
+														<i class="ace-icon fa fa-arrow-right"></i>
+													</a>
+												</li>
+											</ul>
+										</div><!-- /.tab-pane -->
+
+										<div id="navbar-messages" class="tab-pane">
+											<ul class="dropdown-menu-right dropdown-navbar dropdown-menu">
+												<li class="dropdown-content">
+													<ul class="dropdown-menu dropdown-navbar">
+														<li>
+															<a href="#">
+																<img src="../assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+																<span class="msg-body">
+																	<span class="msg-title">
+																		<span class="blue">Alex:</span>
+																		Ciao sociis natoque penatibus et auctor ...
+																	</span>
+
+																	<span class="msg-time">
+																		<i class="ace-icon fa fa-clock-o"></i>
+																		<span>a moment ago</span>
+																	</span>
+																</span>
+															</a>
+														</li>
+
+														<li>
+															<a href="#">
+																<img src="../assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+																<span class="msg-body">
+																	<span class="msg-title">
+																		<span class="blue">Susan:</span>
+																		Vestibulum id ligula porta felis euismod ...
+																	</span>
+
+																	<span class="msg-time">
+																		<i class="ace-icon fa fa-clock-o"></i>
+																		<span>20 minutes ago</span>
+																	</span>
+																</span>
+															</a>
+														</li>
+
+														<li>
+															<a href="#">
+																<img src="../assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+																<span class="msg-body">
+																	<span class="msg-title">
+																		<span class="blue">Bob:</span>
+																		Nullam quis risus eget urna mollis ornare ...
+																	</span>
+
+																	<span class="msg-time">
+																		<i class="ace-icon fa fa-clock-o"></i>
+																		<span>3:15 pm</span>
+																	</span>
+																</span>
+															</a>
+														</li>
+
+														<li>
+															<a href="#">
+																<img src="../assets/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
+																<span class="msg-body">
+																	<span class="msg-title">
+																		<span class="blue">Kate:</span>
+																		Ciao sociis natoque eget urna mollis ornare ...
+																	</span>
+
+																	<span class="msg-time">
+																		<i class="ace-icon fa fa-clock-o"></i>
+																		<span>1:33 pm</span>
+																	</span>
+																</span>
+															</a>
+														</li>
+
+														<li>
+															<a href="#">
+																<img src="../assets/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
+																<span class="msg-body">
+																	<span class="msg-title">
+																		<span class="blue">Fred:</span>
+																		Vestibulum id penatibus et auctor  ...
+																	</span>
+
+																	<span class="msg-time">
+																		<i class="ace-icon fa fa-clock-o"></i>
+																		<span>10:09 am</span>
+																	</span>
+																</span>
+															</a>
+														</li>
+													</ul>
+												</li>
+
+												<li class="dropdown-footer">
+													<a href="inbox.html">
+														See all messages
+														<i class="ace-icon fa fa-arrow-right"></i>
+													</a>
+												</li>
+											</ul>
+										</div><!-- /.tab-pane -->
+									</div><!-- /.tab-content -->
+								</div><!-- /.tabbable -->
+							</div><!-- /.dropdown-menu -->
+						</li>
+
+						<!-- #section:basics/navbar.user_menu -->
+						<li class="light-blue user-min">
+							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+								<img class="nav-user-photo" src="http://qr.hoabinhtourist.com/public/assets/avatars/avatar.png" alt="Jason's Photo" />
+								<span class="user-info">
+									<small>Welcome,</small>
+									Jason
+								</span>
+
+								<i class="ace-icon fa fa-caret-down"></i>
+							</a>
+
+							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+								<li>
+									<a href="#">
+										<i class="ace-icon fa fa-cog"></i>
+										Settings
+									</a>
+								</li>
+
+								<li>
+									<a href="profile.html">
+										<i class="ace-icon fa fa-user"></i>
+										Profile
+									</a>
+								</li>
+
+								<li class="divider"></li>
+
+								<li>
+									<a href="#">
+										<i class="ace-icon fa fa-power-off"></i>
+										Logout
+									</a>
+								</li>
+							</ul>
+						</li>
+
+						<!-- /section:basics/navbar.user_menu -->
+					</ul>
+				</div>
+
+				<!-- /section:basics/navbar.dropdown -->
+				<nav role="navigation" class="navbar-menu pull-left collapse navbar-collapse">
+					<!-- #section:basics/navbar.nav -->
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								Overview
+	  		&nbsp;
+								<i class="ace-icon fa fa-angle-down bigger-110"></i>
+							</a>
+
+							<ul class="dropdown-menu dropdown-light-blue dropdown-caret">
+								<li>
+									<a href="#">
+										<i class="ace-icon fa fa-eye bigger-110 blue"></i>
+										Monthly Visitors
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<i class="ace-icon fa fa-user bigger-110 blue"></i>
+										Active Users
+									</a>
+								</li>
+
+								<li>
+									<a href="#">
+										<i class="ace-icon fa fa-cog bigger-110 blue"></i>
+										Settings
+									</a>
+								</li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="#">
+								<i class="ace-icon fa fa-envelope"></i>
+								Messages
+								<span class="badge badge-warning">5</span>
+							</a>
+						</li>
+					</ul>
+
+					<!-- /section:basics/navbar.nav -->
+
+					<!-- #section:basics/navbar.form -->
+					<form class="navbar-form navbar-left form-search" role="search">
+						<div class="form-group">
+							<input type="text" placeholder="search" />
+						</div>
+
+						<button type="button" class="btn btn-mini btn-info2">
+							<i class="ace-icon fa fa-search icon-only bigger-110"></i>
+						</button>
+					</form>
+
+					<!-- /section:basics/navbar.form -->
+				</nav>
+			</div><!-- /.navbar-container -->
+		</div>
+
+		<!-- /section:basics/navbar.layout -->
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<!-- #section:basics/sidebar.horizontal -->
+			<div id="sidebar" class="sidebar      h-sidebar                navbar-collapse collapse">
+				<script type="text/javascript">
+					try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+				</script>
+
+				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+						<button class="btn btn-success">
+							<i class="ace-icon fa fa-signal"></i>
+						</button>
+
+						<button class="btn btn-info">
+							<i class="ace-icon fa fa-pencil"></i>
+						</button>
+
+						<!-- #section:basics/sidebar.layout.shortcuts -->
+						<button class="btn btn-warning">
+							<i class="ace-icon fa fa-users"></i>
+						</button>
+
+						<button class="btn btn-danger">
+							<i class="ace-icon fa fa-cogs"></i>
+						</button>
+
+						<!-- /section:basics/sidebar.layout.shortcuts -->
+					</div>
+
+					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+						<span class="btn btn-success"></span>
+
+						<span class="btn btn-info"></span>
+
+						<span class="btn btn-warning"></span>
+
+						<span class="btn btn-danger"></span>
+					</div>
+				</div><!-- /.sidebar-shortcuts -->
+				<ul class="nav nav-list">					
+					<li class=" hover">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-tachometer"></i>
+							<span class="menu-text">
+								Quản lý hệ thống
+							</span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu" style="width:255px;">
+							
+							<li class="hover">
+								<a href="http://qr.hoabinhtourist.com/admin/enterprise">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Thông tin doanh nghiệp
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="hover">
+								<a href="http://qr.hoabinhtourist.com/admin/user/list">
+									<i class="menu-icon fa fa-caret-right"></i>
+									DS nhóm sử dụng
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="hover">
+								<a href="http://qr.hoabinhtourist.com/admin/user/list">
+									<i class="menu-icon fa fa-caret-right"></i>
+									DS người sử dụng
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="hover">
+								<a href="http://qr.hoabinhtourist.com/admin/user/list">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Phân quyền hệ thống
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="hover">
+								<a href="javascript:void(0);">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Thiết lập sự kiện hiện hành
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="hover">
+								<a href="javascript:void(0);">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Khóa dữ liệu sự kiện
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="hover">
+								<a href="javascript:void(0);">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Duyệt chứng từ sự kiện
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="hover">
+								<a href="javascript:void(0);">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Import danh mục khách mời
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="hover">
+								<a href="http://qr.hoabinhtourist.com/admin/smtpconfig">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Cấu hình thông tin gửi Email
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="hover">
+								<a href="javascript:void(0);">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Thông tin bản quyền
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+
+					<li class="hover">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-desktop"></i>
+							<span class="menu-text">
+								Khai báo danh mục
+							</span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu" style="width:255px;">
+							<li class="active open hover">
+								<a href="javascript:void(0);" class="dropdown-toggle">
+									Danh mục loại sự kiện
+								</a>
+							</li>
+
+							<li class="hover">
+								<a href="http://qr.hoabinhtourist.com/admin/events">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Danh mục sự kiện
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="hover">
+								<a href="elements.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Danh mục khách mời
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="hover">
+								<a href="buttons.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Danh mục loại buổi tiệc
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="hover">
+								<a href="content-slider.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Danh mục chức vụ
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="hover">
+								<a href="treeview.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Danh mục loại khách
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="hover">
+								<a href="jquery-ui.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Import danh mục khách mời
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="hover">
+								<a href="nestable-list.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Mẫu import danh sách khách mời
+								</a>
+
+								<b class="arrow"></b>
+							</li>							
+						</ul>
+					</li>
+
+					<li class="active open hover">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-list"></i>
+							<span class="menu-text"> Quản lý sự kiện </span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu" style="width: 275px;">
+							<li class="hover">
+								<a href="tables.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Thiết lập mẫu thư mời sự kiện
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="hover">
+								<a href="jqgrid.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Phiếu nhập khách mời tham gia sự kiện
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="hover">
+								<a href="jqgrid.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Gửi thư mời sự kiện qua Email
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="hover">
+								<a href="jqgrid.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Phiếu đăng ký thông tin khách mời
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="hover">
+								<a href="jqgrid.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Phiếu Checkin tổ chức sự kiện
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="hover">
+								<a href="jqgrid.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Phiếu Checkout tổ chức sự kiện
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="hover">
+								<a href="jqgrid.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Checkin sự kiện tự động
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="hover">
+								<a href="jqgrid.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Checkout sự kiện tự động
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+							<li class="hover">
+								<a href="jqgrid.html" class="dropdown-toggle">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Bảng kê khách hàng tham dự sự kiện
+									<b class="arrow fa fa-angle-down"></b>
+								</a>
+<b class="arrow"></b>
+								
+								<ul class="submenu" style="width:275px;">
+							<li class="hover">
+								<a href="#" class="dropdown-toggle">
+									<i class="menu-icon fa fa-caret-right"></i>
+
+									Bảng kê tổng hợp Checkin sự kiện
+									
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+<li class="hover">
+										<a href="top-menu.html">
+											<i class="menu-icon fa fa-caret-right"></i>
+											Bảng kê tổng hợp Checkout sự kiện
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+
+									<li class="hover">
+										<a href="two-menu-1.html">
+											<i class="menu-icon fa fa-caret-right"></i>
+											Phiếu in Barcode sự kiện theo khách mời
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+
+									<li class="hover">
+										<a href="two-menu-2.html">
+											<i class="menu-icon fa fa-caret-right"></i>
+											Thống kê số lượng khách mời sự kiện
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+
+									<li class="hover">
+										<a href="mobile-menu-1.html">
+											<i class="menu-icon fa fa-caret-right"></i>
+											Bảng kê thông tin Import khách trùng số điện thoại
+										</a>
+
+										<b class="arrow"></b>
+									</li>
+						</ul>
+								
+							</li>
+						</ul>
+					</li>
+
+					<li class="hover">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-list-alt"></i>
+							<span class="menu-text"> Quản lý tham dự tiệc </span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu" style="width:275px;">
+							<li class="hover">
+								<a href="form-elements.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Thiết lập buổi tiệc hiện hành
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="hover">
+								<a href="form-elements-2.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Phiếu nhập khách mời tham dự tiệc
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="hover">
+								<a href="form-wizard.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Checkin tự động dự tiệc
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="hover">
+								<a href="wysiwyg.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Bảng kê tổng hợp Checkin dự tiệc
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+
+					<li class="hover">						
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-pencil-square-o"></i>
+							<span class="menu-text"> Định nghĩa chứng từ </span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu" style="width:235px;">
+							<li class="hover">
+								<a href="form-elements.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Định nghĩa phiếu tổ chức sự kiện
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+						
+						
+					</li>
+				</ul><!-- /.nav-list -->
+
+				<!-- #section:basics/sidebar.layout.minimize -->
+
+				<!-- /section:basics/sidebar.layout.minimize -->
+				<script type="text/javascript">
+					try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+				</script>
+			</div>
+
+			<!-- /section:basics/sidebar.horizontal -->
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="page-content">
+						<?php echo $this->layout()->content; ?>
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+
+			<div class="footer">
+				<div class="footer-inner">
+					<!-- #section:basics/footer -->
+					<div class="footer-content">
+						<span class="bigger-120">
+							<span class="blue bolder">QR Code</span>
+							Application &copy; 2019
+						</span>
+
+						&nbsp; &nbsp;
+						<span class="action-buttons">
+							<a href="#">
+								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+							</a>
+
+							<a href="#">
+								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+							</a>
+						</span>
+					</div>
+
+					<!-- /section:basics/footer -->
+				</div>
+			</div>
+
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+			</a>
+		</div><!-- /.main-container -->
+
+			<!--[if !IE]> -->
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='/public/assets/js/jquery.js'>"+"<"+"/script>");
+		</script>
+
+		<!-- <![endif]-->
+
+			<!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='/public/assets/js/jquery1x.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='/public/assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
+		</script>
+		
+		<script type="text/javascript" src="/public/assets/js/bootstrap.js"></script>
+	
+		<!-- page specific plugin scripts -->
+		<script src="/public/assets/js/dataTables/jquery.dataTables.js"></script>
+		<script type="text/javascript" src="/public/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+		<script src="/public/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
+		<script src="/public/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>	
+		<!-- page specific plugin scripts -->
+
+		<!--[if lte IE 8]>
+		  <script src="/public/assets/js/excanvas.js"></script>
+		<![endif]-->
+		<script src="/public/assets/js/jquery-ui.custom.js"></script>
+		<script src="/public/assets/js/jquery.ui.touch-punch.js"></script>
+		<script src="/public/assets/js/chosen.jquery.js"></script>
+		<script src="/public/assets/js/fuelux/fuelux.spinner.js"></script>
+		<script src="/public/assets/js/prettify.js"></script>
+		
+		<script type="text/javascript" src="/public/assets/js/date-time/bootstrap-datepicker.js"></script>
+		<script src="/public/assets/js/date-time/bootstrap-timepicker.js"></script>
+		<script type="text/html" src="/public/assets/js/date-time/moment.js"></script>
+		<script src="/public/assets/js/date-time/daterangepicker.js"></script>
+		<script src="/public/assets/js/bootstrap-colorpicker.js"></script>
+		<script src="/public/assets/js/jquery.knob.js"></script>
+		<script src="/public/assets/js/jquery.autosize.js"></script>
+		<script src="/public/assets/js/jquery.inputlimiter.1.3.1.js"></script>
+		<script type="text/html" src="/public/assets/js/jquery.maskedinput.js"></script>
+		<script src="/public/assets/js/bootstrap-tag.js"></script>
+
+		<!-- ace scripts -->
+		<script src="/public/assets/js/ace/elements.scroller.js"></script>
+		<script src="/public/assets/js/ace/elements.colorpicker.js"></script>
+		<script src="/public/assets/js/ace/elements.fileinput.js"></script>
+		<script src="/public/assets/js/ace/elements.typeahead.js"></script>
+		<script src="/public/assets/js/ace/elements.wysiwyg.js"></script>
+		<script src="/public/assets/js/ace/elements.spinner.js"></script>
+		<script src="/public/assets/js/ace/elements.treeview.js"></script>
+		<script src="/public/assets/js/ace/elements.wizard.js"></script>
+		<script src="/public/assets/js/ace/elements.aside.js"></script>
+		<script src="/public/assets/js/ace/ace.js"></script>
+		<script src="/public/assets/js/ace/ace.ajax-content.js"></script>
+		<script src="/public/assets/js/ace/ace.touch-drag.js"></script>
+		<script src="/public/assets/js/ace/ace.sidebar.js"></script>
+		<script src="/public/assets/js/ace/ace.sidebar-scroll-1.js"></script>
+		<script src="/public/assets/js/ace/ace.submenu-hover.js"></script>
+		<script src="/public/assets/js/ace/ace.widget-box.js"></script>
+		<script src="/public/assets/js/ace/ace.settings.js"></script>
+		<script src="/public/assets/js/ace/ace.settings-rtl.js"></script>
+		<script src="/public/assets/js/ace/ace.settings-skin.js"></script>
+		<script src="/public/assets/js/ace/ace.widget-on-reload.js"></script>
+		<script src="/public/assets/js/ace/ace.searchbox-autocomplete.js"></script>
+		
+		<script src="/public/js/functions.js" type="text/javascript"></script>
+		
+		<script type="text/javascript">
+	$('.date-picker').datepicker({
+					autoclose: true,
+					todayHighlight: true
+				})
+	
+	$(function () {
+    setNavigation();   
+	});			
+				
+
+		/*	
+		if($('a').attr('href') === '/admin/new/list') { 
+			$(this).parent().parent().parent().addClass('open');
+   	
+   			}	
+   			*/			
+		</script>
+
+							
+
+	</body>
+
+</html>
