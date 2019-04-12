@@ -1,0 +1,143 @@
+<style>
+fieldset {
+    margin: 10px 0;
+    padding: 10px;
+    border-top: 1px solid #D7D7D7;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    border-left: 1px solid #D7D7D7;
+    background-color: #FFFFFF;
+    position: relative;
+}
+legend {
+    padding: 1px 5px;
+    font-family: Tahoma,arial,Verdana,Sans-serif;
+    font-size: .9em;
+    font-weight: bold;
+    color: #115098;
+    margin-top: -.4em;
+    position: relative;
+    text-transform: none;
+    line-height: 1.2em;
+    top: 0;
+    vertical-align: middle;
+	border-bottom:none;
+	width:auto !important;
+	margin-bottom:5px !important;
+}
+fieldset dl {
+    margin-bottom: 10px;
+    font-size: 0.85em;
+}
+fieldset dt {
+    width: 20%;
+    text-align: left;
+    border: none;
+    padding-top: 3px;
+    float: left;
+}
+fieldset dd {
+    margin: 0 0 0 20%;
+    padding: 0 0 0 5px;
+    border: none;
+    border-left: 1px solid #CCCCCC;
+    vertical-align: top;
+    font-size: 1.00em;
+}
+
+.tbl-grid {
+    border-collapse: collapse;
+}
+tabbable table {
+    width: 100%;
+    border: 1px solid #CCCFD3;
+    background-color: #FFFFFF;
+    padding: 1px;
+}
+.tbl-grid tr td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+.row1 {
+    background-color: #F9F9F9;
+}
+.row2 {
+    background-color: #DCEBFE;
+}
+
+</style>
+
+<h2 style="font-size: 16px;font-weight: bold;">Khai báo danh mục » Danh mục khách mời » Danh sách khách mời » Thêm mới</h2>
+<hr style="width:100%;clear:both;"/>
+
+<form id="edititem" method="post" action="/admin/events/create2" enctype="multipart/form-data" class="validate-form">
+<div class="col-md-6 col-sm-6 col-xs-12">
+<fieldset>
+    <legend>Thông tin cơ bản(*):</legend>
+	<table style="width:100%;">
+        <tr>
+            <td style="width: 30%;"><label for="txtTensukien" style="font-weight:bold;">Chức danh:</label></td>
+            <td>
+            <select id="ddlChucdanh" name="ddlChucdanh" style="width: 99%;">
+                <option value="1">Mr</option>
+                <option value="2">Mrs</option>
+                <option value="3">Dr.</option>
+                <option value="4">Prof</option>
+            </select>
+            </td>
+        </tr>
+	<tr>
+	<td style="width: 30%;"><label for="txtHo" style="font-weight:bold;">Họ (*):</label></td>
+	<td><input style="width: 99%;margin-top: 10px;" class="form-control" required name="txtHo" value="" maxlength="255" type="text"></td>
+	</tr>
+        <tr>
+            <td style="width: 30%;"><label for="txtTen" style="font-weight:bold;">Tên (*):</label></td>
+            <td><input style="width: 99%;margin-top: 10px;" class="form-control" required name="txtTen" value="" maxlength="255" type="text"></td>
+        </tr>
+        <tr>
+            <td style="width: 30%;"><label for="txtDidong" style="font-weight:bold;">Di động:</label></td>
+            <td><input style="width: 99%;margin:10px 0 0 0;" required class="form-control" name="txtDidong" value="" maxlength="255" type="text"></td>
+        </tr>
+        <tr>
+            <td style="width: 30%;"><label for="txtEmail" style="font-weight:bold;">Email:</label></td>
+            <td><input style="width: 99%;margin:10px 0 0 0;" required class="form-control" name="txtEmail" value="" maxlength="255" type="text"></td>
+        </tr>
+
+	<tr>
+	<td style="width: 30%;"><label for="txtDiachi" style="font-weight:bold;">Địa chỉ:</label></td>
+	<td><input style="width: 99%;margin:10px 0 0 0;" required class="form-control" name="txtDiachi" value="" maxlength="255" type="text"></td>
+	</tr>
+
+	</table>    	
+</fieldset>
+</div>
+
+<div class="col-md-6 col-sm-6 col-xs-12">
+<fieldset>
+    <legend>Thông tin khác</legend>
+	<table style="width:100%;">
+        <tr>
+            <td style="width: 30%;"><label for="txtCoupon" style="font-weight:bold;">Mã Coupon:</label></td>
+            <td><input style="width: 99%;" class="form-control" name="txtCoupon" value="" maxlength="255" type="text"></td>
+        </tr>
+	<tr>
+	<td style="width: 30%;"><label for="ddlChucvu" style="font-weight:bold;">Chức vụ:</label></td>
+	<td><input style="width: 99%;margin-top: 10px;" class="form-control" name="ddlChucvu" value="" maxlength="255" type="text"></td>
+	</tr>
+        <tr>
+            <td style="width: 30%;"><label for="ddlLoaiKhachmoi" style="font-weight:bold;">Loại khách mời:</label></td>
+            <td><input style="width: 99%;margin-top: 10px;" class="form-control" name="ddlLoaiKhachmoi" value="" maxlength="255" type="text"></td>
+        </tr>
+        <tr>
+            <td style="width: 30%;"><label for="ddlSukien" style="font-weight:bold;">Sự kiện:</label></td>
+            <td><input style="width: 99%;margin-top: 10px;" class="form-control" name="ddlSukien" value="" maxlength="255" type="text"></td>
+        </tr>
+	</table>
+</fieldset>
+</div>
+<div class="submit-buttons">
+    <p style="text-align:right;margin-right:10px;"><input style="cursor: pointer !important;" class="btn btn-primary" id="submit" name="update" value="Thêm mới" type="submit">
+    <input value="Insert" name="submit" type="hidden"></p>
+</div>
+</form>
+

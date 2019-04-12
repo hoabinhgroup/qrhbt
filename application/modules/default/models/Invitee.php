@@ -1,26 +1,18 @@
 <?php
-class Model_Events extends Louis_Db_Table_Abstract {
-     	protected $_name = 'events';
+class Model_Invitee extends Louis_Db_Table_Abstract {
+     	protected $_name = 'invitee';
        protected $_primary = 'id';
 		
 		function get_details($options = array()) {
 
        
         $select = $this->_db->select()
-        					->from(array('p' => $this->_name))
-        					->joinInner(array('e' => 'users_events'), 'p.id = e.event_id');
+        					->from(array('p' => $this->_name));
         										        					
         $id = $this->get_array_value($options, "id");
         if ($id) {
            $select->where('id = ?', $id);
-        }     
-        
-        
-        $user_id = $this->get_array_value($options, "user_id");
-        if ($user_id) {
-           $select->where('user_id = ?', $user_id);
-        }  
-           
+        }        
         
         $select->order('p.id desc');
                				

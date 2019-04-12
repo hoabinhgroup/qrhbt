@@ -1,0 +1,108 @@
+<style>
+fieldset {
+    margin: 10px 0;
+    padding: 10px;
+    border-top: 1px solid #D7D7D7;
+    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    border-left: 1px solid #D7D7D7;
+    background-color: #FFFFFF;
+    position: relative;
+}
+legend {
+    padding: 1px 5px;
+    font-family: Tahoma,arial,Verdana,Sans-serif;
+    font-size: .9em;
+    font-weight: bold;
+    color: #115098;
+    margin-top: -.4em;
+    position: relative;
+    text-transform: none;
+    line-height: 1.2em;
+    top: 0;
+    vertical-align: middle;
+	border-bottom:none;
+	width:auto !important;
+	margin-bottom:5px !important;
+}
+fieldset dl {
+    margin-bottom: 10px;
+    font-size: 0.85em;
+}
+fieldset dt {
+    width: 20%;
+    text-align: left;
+    border: none;
+    padding-top: 3px;
+    float: left;
+}
+fieldset dd {
+    margin: 0 0 0 20%;
+    padding: 0 0 0 5px;
+    border: none;
+    border-left: 1px solid #CCCCCC;
+    vertical-align: top;
+    font-size: 1.00em;
+}
+
+.tbl-grid {
+    border-collapse: collapse;
+}
+tabbable table {
+    width: 100%;
+    border: 1px solid #CCCFD3;
+    background-color: #FFFFFF;
+    padding: 1px;
+}
+.tbl-grid tr td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+.row1 {
+    background-color: #F9F9F9;
+}
+.row2 {
+    background-color: #DCEBFE;
+}
+
+</style>
+
+<h2 style="font-size: 16px;font-weight: bold;">Khai báo danh mục » Danh mục chức vụ » Danh sách chức vụ » Thêm mới</h2>
+<hr style="width:100%;clear:both;"/>
+
+<form id="edititem" method="post" action="/admin/position/create2" enctype="multipart/form-data" class="validate-form">
+<div class="col-md-6 col-sm-6 col-xs-12">
+<fieldset>
+    <legend>Thông tin cơ bản(*):</legend>
+	<table style="width:100%;">
+	<tr>
+	<td style="width: 30%;"><label for="txtTenchucvu" style="font-weight:bold;">Tên chức vụ(*):</label></td>
+	<td><input style="width: 99%;" class="form-control" required name="txtTenchucvu" value="" maxlength="255" type="text"></td>
+	</tr>
+	<tr>
+	<td style="width: 30%;"><label for="txtGhichu" style="font-weight:bold;">Ghi chú:</label></td>
+	<td>
+        <textarea id="txtGhichu" name="txtGhichu" rows="5" cols="10" class="form-control" style="width: 100%;height: 75px;margin-top: 10px;"></textarea>
+    </td>
+	</tr>
+        <tr>
+            <td style="width: 30%;"><label for="txtThutu" style="font-weight:bold;">Thứ tự:</label></td>
+            <td><input style="width: 30%;margin-top: 10px;" class="form-control" required name="txtThutu" value="" type="number"></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <div class="submit-buttons">
+                    <p style="text-align:right;margin-top:10px;"><input style="cursor: pointer !important;" class="btn btn-primary" id="submit" name="update" value="Thêm mới" type="submit">
+                        <input value="Insert" name="submit" type="hidden"></p>
+                </div>
+            </td>
+        </tr>
+	</table>    	
+</fieldset>
+</div>
+
+
+
+</form>
+
