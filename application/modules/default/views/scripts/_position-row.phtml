@@ -7,14 +7,14 @@
 	</td>
     
     <td width="25%"><b>
-	<a class="green" target="_blank" href='/<?=ADMIN?>/position/edit/id/<?php echo $this->id;?>'>
+	<a class="green" href='/<?=ADMIN?>/position/edit/id/<?php echo $this->id;?>'>
 	<?php echo $this->name; ?>
 	</a>
 	</b></td>
     <td><?php echo $this->notes; ?></td>
-    <td><?php echo $this->orders; ?></td>
-	<td>
-	<a href="/<?=ADMIN?>/position/edit/id/<?php echo $this->id;?>"><img src="/public/images/icon_edit.gif" alt="Sửa" title="Sửa nội dung này"></a>
-	<a onclick="return confirm('Bạn muốn xóa?');"  href="/<?=ADMIN?>/position/delete/id/<?php echo $this->id;?>" ><img title="Xóa" alt="Xóa" src="/public/images/icon_delete.gif"></a>
+    <td  style="width: 10%;text-align: center;vertical-align: middle;"><?php echo $this->orders; ?></td>
+	<td style="text-align: center;vertical-align: middle;">
+	<a href="/<?=ADMIN?>/position/edit/id/<?php echo $this->id;?>"><i class="fa fa-cog" title="Sửa nội dung này" aria-hidden="true"></i> Sửa</a>
+	<a onclick="return confirm('Bạn có thật sự muốn xóa?');"  href="/<?=ADMIN?>/position/delete/id/<?php echo $this->id;?>" ><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
 	</td>
 </tr>

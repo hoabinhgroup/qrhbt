@@ -1,374 +1,110 @@
 <style>
-fieldset {
-    margin: 10px 0;
-    padding: 10px;
-    border-top: 1px solid #D7D7D7;
-    border-right: 1px solid #CCCCCC;
-    border-bottom: 1px solid #CCCCCC;
-    border-left: 1px solid #D7D7D7;
-    background-color: #FFFFFF;
-    position: relative;
-}
-legend {
-    padding: 1px 5px;
-    font-family: Tahoma,arial,Verdana,Sans-serif;
-    font-size: .9em;
-    font-weight: bold;
-    color: #115098;
-    margin-top: -.4em;
-    position: relative;
-    text-transform: none;
-    line-height: 1.2em;
-    top: 0;
-    vertical-align: middle;
-	border-bottom:none;
-	width:auto !important;
-}
-fieldset dl {
-    margin-bottom: 10px;
-    font-size: 0.85em;
-}
-fieldset dt {
-    width: 20%;
-    text-align: left;
-    border: none;
-    padding-top: 3px;
-    float: left;
-}
-fieldset dd {
-    margin: 0 0 0 20%;
-    padding: 0 0 0 5px;
-    border: none;
-    border-left: 1px solid #CCCCCC;
-    vertical-align: top;
-    font-size: 1.00em;
-}
-input.full, textarea.full {
-    width: 99%;
-    padding: 4px;
-}
-.tbl-grid {
-    border-collapse: collapse;
-}
-tabbable table {
-    width: 100%;
-    border: 1px solid #CCCFD3;
-    background-color: #FFFFFF;
-    padding: 1px;
-}
-.tbl-grid tr td {
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-.row1 {
-    background-color: #F9F9F9;
-}
-.row2 {
-    background-color: #DCEBFE;
-}
+    fieldset {
+        margin: 10px 0;
+        padding: 10px;
+        border-top: 1px solid #D7D7D7;
+        border-right: 1px solid #CCCCCC;
+        border-bottom: 1px solid #CCCCCC;
+        border-left: 1px solid #D7D7D7;
+        background-color: #FFFFFF;
+        position: relative;
+    }
+    legend {
+        padding: 1px 5px;
+        font-family: Tahoma,arial,Verdana,Sans-serif;
+        font-size: .9em;
+        font-weight: bold;
+        color: #115098;
+        margin-top: -.4em;
+        position: relative;
+        text-transform: none;
+        line-height: 1.2em;
+        top: 0;
+        vertical-align: middle;
+        border-bottom:none;
+        width:auto !important;
+        margin-bottom:5px !important;
+    }
+    fieldset dl {
+        margin-bottom: 10px;
+        font-size: 0.85em;
+    }
+    fieldset dt {
+        width: 20%;
+        text-align: left;
+        border: none;
+        padding-top: 3px;
+        float: left;
+    }
+    fieldset dd {
+        margin: 0 0 0 20%;
+        padding: 0 0 0 5px;
+        border: none;
+        border-left: 1px solid #CCCCCC;
+        vertical-align: top;
+        font-size: 1.00em;
+    }
+
+    .tbl-grid {
+        border-collapse: collapse;
+    }
+    tabbable table {
+        width: 100%;
+        border: 1px solid #CCCFD3;
+        background-color: #FFFFFF;
+        padding: 1px;
+    }
+    .tbl-grid tr td {
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+    .row1 {
+        background-color: #F9F9F9;
+    }
+    .row2 {
+        background-color: #DCEBFE;
+    }
+
 </style>
-<div class="tabbable">
-	<ul class="nav nav-tabs" id="myTab">
-				<li class="active">
-					<a data-toggle="tab" href="#home">
-						<i class="green ace-icon fa fa-home bigger-120"></i>
-							Hotels » Sửa #<?php echo $this->hotel_id; ?><br/>
-							<i>Bảng điều khiển bên dưới sẽ giúp bạn tùy chỉnh phần này.</i>
-					</a>
-				</li>
-	</ul>
 
-	<div class="tab-content">
-				<div id="home" class="tab-pane fade in active">
-				<form id="newitem" method="post" action="/admin/defaulthotel/save" enctype="multipart/form-data" class="validate-form">
-<fieldset>
-    <legend>Thiết lập</legend>
-    <dl>
-        <dt>
-            <label for="title">
-                Tên*:</label></dt>
-        <dd>
-            <input type="text" aria-required="true" size="40" value="<?php echo $this->title; ?>"
-                id="title" name="title" class="full text required">
-				<input type="hidden" id="hotel_id" name="hotel_id" value="<?php echo $this->hotel_id; ?>" />
-				</dd>
-    </dl>
-    <dl>
-        <dt>
-            <label for="address">
-                Address*:</label></dt>
-        <dd>
-            <input type="text" aria-required="true" size="40" value="<?php echo $this->address; ?>"
-                id="address" name="address" class="full text required"></dd>
-    </dl>
-    <dl>
-        <dt>
-            <label for="address">
-                Website:</label></dt>
-        <dd>
-            <input type="text" size="40" value="<?php echo $this->website; ?>" id="website" name="website" class="full text"></dd>
-    </dl>
-    <dl>
-        <dt>
-            <label for="city_id">
-                City*:</label></dt>
-        <dd>
-            <select name="city_id">
-                <option value="0">--select--</option>
-                <optgroup label="Vietnam" title="Vietnam">
-                    <option value="255">------Hanoi City </option>
-                    <option value="244">------Ho Chi Minh City </option>
-                    <option value="260">------Nha Trang City </option>
-                    <option value="277">------Phan Thiet City </option>
-                    <option value="282">------Phu Quoc Island </option>
-                    <option value="246">------Da Nang City </option>
-                    <option value="259" selected="selected">------Ha Long City </option>
-                    <option value="253">------Hai Phong City </option>
-                    <option value="256">------Sapa City </option>
-                    <option value="257">------Hue City </option>
-                    <option value="262">------Da Lat City </option>
-                    <option value="263">------Hoi An City </option>
-                    <option value="258">------Mekong Delta </option>
-                    <option value="254">------Bac Giang City </option>
-                    <option value="264">------Buon Me Thuot City </option>
-                    <option value="266">------Ha Giang City </option>
-                    <option value="251">------Bac Ninh City </option>
-                    <option value="267">------Dien Bien City </option>
-                    <option value="268">------Hoa Binh City </option>
-                    <option value="270">------Son La City </option>
-                    <option value="271">------Cao Bang City </option>
-                    <option value="272">------Yen Bai City </option>
-                    <option value="274">------Dong Thap City </option>
-                    <option value="275">------Ca Mau City </option>
-                    <option value="278">------ Vung Tau City </option>
-                    <option value="279">------Đăk Lăk </option>
-                    <option value="280">------Ben Tre City </option>
-                    <option value="286">------Chau Doc City </option>
-                    <option value="284">------Can Tho City </option>
-                    <option value="285">------Ninh Binh City </option>
-                    <option value="287">------Vinh City </option>
-                    <option value="288">------Quy Nhon City </option>
-                    <option value="340">------Ha Long Bay </option>
-                    <option value="341">------Cat Ba Island </option>
-                    <option value="342">------Cu Chi Tunnel </option>
-                    <option value="343">------Chau Doc (Mekong Delta) </option>
-                    <option value="344">------Mui Ne </option>
-                    <option value="345">------Lang son </option>
-                    <option value="346">------Cao Bang </option>
-                    <option value="347">------That khe </option>
-                    <option value="348">------Mai chau </option>
-                    <option value="349">------Quang Nam </option>
-                    <option value="350">------Hai Duong </option>
-                    <option value="351">------Vinh Phuc </option>
-                    <option value="352">------Bac Kan </option>
-                </optgroup>
-                <optgroup label="Cambodia" title="Cambodia">
-                    <option value="289">------Phnom Penh </option>
-                    <option value="300">------Banlung </option>
-                    <option value="301">------Battambang </option>
-                    <option value="302">------Kampot </option>
-                    <option value="303">------Koh Kong </option>
-                    <option value="304">------Kompong Thom </option>
-                    <option value="305">------Kratie </option>
-                    <option value="306">------Siem Reap </option>
-                    <option value="307">------Sihanoukville </option>
-                    <option value="308">------Mondulkiri </option>
-                    <option value="309">------Banteay Meanchey </option>
-                    <option value="310">------Angkor </option>
-                    <option value="311">------ Takéo </option>
-                    <option value="312">------Svay Rieng </option>
-                    <option value="313">------Stung Treng </option>
-                    <option value="314">------Ratanakiri </option>
-                    <option value="315">------Prey Veng </option>
-                    <option value="316">------Pursat </option>
-                    <option value="317">------Preah Vihear </option>
-                    <option value="318">------Pailin City </option>
-                    <option value="319">------Oddar Meancheay </option>
-                    <option value="320">------Kep </option>
-                    <option value="321">------Kandal </option>
-                    <option value="322">------Kampong Spe </option>
-                    <option value="323">------Kampong Chhnang </option>
-                    <option value="324">------Kampong Cham </option>
-                    <option value="326">------Siem Riep </option>
-                    <option value="327">------Koh Dach Islands </option>
-                </optgroup>
-                <optgroup label="Laos" title="Laos">
-                    <option value="290">------Vientiane capital </option>
-                    <option value="291">------Huay Xai </option>
-                    <option value="293">------Luang Namtha </option>
-                    <option value="294">------Luang Prabang </option>
-                    <option value="295">------Muang Xay </option>
-                    <option value="296">------Pakbeng </option>
-                    <option value="297">------Pakse </option>
-                    <option value="298">------Savannakhet </option>
-                    <option value="299">------Tha Khaek </option>
-                    <option value="328">------Attapeu </option>
-                    <option value="329">------Bokeo </option>
-                    <option value="330">------Borikhamxay </option>
-                    <option value="331">------Champasack </option>
-                    <option value="332">------Huaphanh </option>
-                    <option value="333">------Khammuane </option>
-                    <option value="334">------Oudomxay </option>
-                    <option value="335">------Phongsaly </option>
-                    <option value="336">------Saravane </option>
-                    <option value="337">------Sekong </option>
-                    <option value="338">------Xiengkhuang </option>
-                    <option value="339">------Xayabury </option>
-                    <option value="353">------Vang Vieng </option>
-                    <option value="354">------Ba Na Hin </option>
-                    <option value="355">------Don Khone Island </option>
-                    <option value="356">------Thakek </option>
-                    <option value="357">------Tad Lo </option>
-                    <option value="358">------Don Daeng </option>
-                </optgroup>
-            </select>
-        </dd>
-    </dl>
-    <dl>
-        <dt>
-            <label for="star_number">
-                Star number*:</label></dt>
-        <dd>
-            <select name="star_number">
-			
-			<?php for($i=0;$i<=5;$i++){  ?>
-			<?php if($i==$this->star_number){  ?>
-			<option selected="selected" value="<?php echo $i;?>"><?php echo $i;?></option>
-			<?php  }else{ ?>
-			<option value="<?php echo $i;?>"><?php echo $i;?></option>
-			<?php  }} ?>
-                
-            </select>
-        </dd>
-    </dl>
-    <dl>
-        <dt>
-            <label for="title">
-                Priority*:</label></dt>
-        <dd>
-            <input type="text" aria-required="true" size="40" value="<?php echo $this->priority;?>" id="priority" name="priority"
-                class="full text required"></dd>
-    </dl>
-</fieldset>
-<fieldset>
-    <legend>Giới thiệu ngắn</legend>
-    <textarea name="intro" class="full" style="height: 100px"><?php echo $this->intro;?></textarea>
-</fieldset>
-<fieldset>
-    <legend>Giới thiệu đầy đủ</legend>    
-    <!--<textarea rows="25" cols="25" class="mceFull" name="iso-content" id="textarea_content"
-        style="width: 100%; display: none;"></textarea>-->
-	<textarea name="textarea_content" class="full" style="height: 100px"><?php echo $this->content;?></textarea>
-</fieldset>
-<fieldset>
-    <legend>Ảnh minh họa</legend>
-    <table>
-        <tbody>
-            <tr>
-                <td width="200px">
-                    <img src="" width="150px" height="100px">
-                </td>
-                <td valign="top" align="left">
-                    Tải ảnh từ trên máy tính<br>
-                    <input type="file" name="image"><br>
-                    Hệ thống chỉ chấp nhận các ảnh có định dạng .jpg,.png, hoặc .gif
-                    <br>
-                    <br>
-                    Hoặc sử dụng ảnh trên mạng<br>
-                    <input type="text" name="image_url" class="full text">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</fieldset>
-<br class="clear">
-<fieldset id="FImage">
-    <legend>File tải về*:</legend>
-    <table>
-        <tbody>
-            <tr>
-                <td width="200px">
-                    <a href="" target="_blank">Xem file hiện tại</a>
-                </td>
-                <td valign="top" align="left">
-                    Tải file từ trên máy tính<br>
-                    <input type="file" name="file_url"><br>
-                    Hệ thống chỉ chấp nhận các ảnh có định dạng .doc,.docx,.pdf,.xsl
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</fieldset>
-<fieldset id="hotelRooms">
-    <legend>Hotel Rooms</legend>
-    <table cellspacing="0" class="tbl-grid">
-        <tbody>
-            <tr>
-                <td class="gridheader">
-                    <strong>STT</strong>
-                </td>
-                <td class="gridheader">
-                    <strong>Room Type</strong>
-                </td>
-                <td class="gridheader">
-                    <strong>Action</strong>
-                </td>
-            </tr>
-			<?php if (count($this->accommodation) > 0) {?>
-			<?php 
-			    $stt= 0;
-			foreach($this->accommodation as $val): $stt++;				
-			 ?>
-			<tr class="row1">
-                <td style="width: 3%; text-align: center; font-size: 30px; color: #ccc">
-                    <?php echo $stt; ?>
-                </td>
-                <td>
-                    <a title="Edit" href="http://bookandpay.vn/ucp/index.php?mod=accommodation&amp;hotel_id=809&amp;act=edit&amp;accommodation_id=1883">
-                        <strong><?php echo $val['title']; ?></strong> </a>
-                </td>
-                <td style="vertical-align: middle; width: 40px; text-align: right; white-space: nowrap;">
-                    <a href="http://bookandpay.vn/ucp/?mod=accommodation&amp;hotel_id=809&amp;act=edit&amp;accommodation_id=1883">
-                        <img src="http://bookandpay.vn/ucp/isocms/themes/images/v2/icon_edit.gif" alt="Sửa"
-                            title="Sửa"></a>
-                </td>
-            </tr>
-			
-			<?php endforeach; ?>
-			<?php }?>            
-        </tbody>
-    </table>
-    <a href="http://bookandpay.vn/ucp/?mod=accommodation&amp;hotel_id=809">Click here to
-        manage rooms of this hotel</a>
-</fieldset>
-<fieldset id="Gallery">
-    <legend>Hotel Gallery</legend>
-    <div id="post_tag" class="tagsdiv">
-        <div class="tagchecklist">
-        </div>
+<h2 style="font-size: 16px;font-weight: bold;"><a href="javascript:void(0);">Khai báo danh mục</a> » <a href="/<?=ADMIN?>/inviteetype">Danh sách loại khách mời</a> » <a href="javascript:void(0);">Chỉnh/Sửa</a></h2>
+<hr style="width:100%;clear:both;"/>
+
+<form id="edititem" method="post" action="/admin/inviteetype/save" enctype="multipart/form-data" class="validate-form">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <fieldset>
+            <legend>Thông tin cơ bản(*):</legend>
+            <table style="width:100%;">
+                <tr>
+                    <td style="width: 30%;"><label for="txtTenloaikhachmoi" style="font-weight:bold;">Tên Loại khách mời(*):</label></td>
+                    <td>
+                        <input style="width: 99%;" class="form-control" required name="txtTenloaikhachmoi" value="<?=$this->name?>" type="text">
+                        <input required name="hdID" value="<?=$this->id?>" type="hidden">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 30%;"><label for="txtGhichu" style="font-weight:bold;">Ghi chú:</label></td>
+                    <td>
+                        <textarea style="width: 99%;margin-top: 10px;" cols="10" rows="5" name="txtGhichu" id="txtGhichu"><?=$this->notes?></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="width: 30%;">&nbsp;</td>
+                    <td>
+                        <div class="submit-buttons">
+                            <p style="text-align:left;margin-top:10px;"><input style="cursor: pointer !important;" class="btn btn-primary" id="submit" name="update" value="Chấp nhận" type="submit">
+                                <input value="Insert" name="submit" type="hidden"></p>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
     </div>
-    <div id="post_tag" class="tagsdiv">
-        <div class="tagchecklist" id="image-list">
-        </div>
-        <div style="margin-top: 10px;">
-            Để thêm mới ảnh cho gallery này, hãy <a href="javascript:void();" id="add-images">nhấn
-                vào đây</a>.
-        </div>
-    </div>
-    <script>        $(document).ready(function () { $('.ntdelbutton').live('click', function () { $(this).parent().remove(); }); $('#add-images').click(function () { var html = '<span><a id="post_tag-check-num-0" class="ntdelbutton">X</a>&nbsp;<input type="file" name="image2[]"/></span>'; $('#image-list').append(html); }); }); function stopRKey(evt) { var evt = (evt) ? evt : ((event) ? event : null); var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); if ((evt.keyCode == 13) && (node.type == "text")) { return false; } } document.onkeypress = stopRKey; </script>
-</fieldset>
-<fieldset class="submit-buttons">
-    <legend>Chấp nhận</legend>
-    <input class="button1" id="submit" name="update" value="Cập nhật" type="submit">
-    <input value="Update" name="submit" type="hidden">
-</fieldset>
+
+
+
+
+
 </form>
-			
- 				<div style="clear:both"></div>
-				</div>
-									
-	</div>
-</div>
 
-		
-	

@@ -1,0 +1,19 @@
+﻿<tr>
+	<td style="text-align: center;vertical-align: middle;" class="center">
+			<label>
+			<input type="checkbox" class="ace" />
+			<span class="lbl"></span>
+			</label>
+	</td>
+    
+    <td width="25%"><b>
+	<a class="green" href='/<?=ADMIN?>/emailtemplate/edit/id/<?php echo $this->id;?>'>
+	<?php echo $this->title; ?>
+	</a>
+	</b></td>
+    <td style="text-align: center;vertical-align: middle;"><?php echo date("d/m/Y", $this->create_date); ?></td>
+	<td style="text-align: center;vertical-align: middle;">
+	<a href="/<?=ADMIN?>/emailtemplate/edit/id/<?php echo $this->id;?>"><i class="fa fa-cog" title="Sửa nội dung này" aria-hidden="true"></i> Sửa</a>
+	<a onclick="return confirm('Bạn có thật sự muốn xóa?');"  href="/<?=ADMIN?>/emailtemplate/delete/id/<?php echo $this->id;?>" ><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
+	</td>
+</tr>

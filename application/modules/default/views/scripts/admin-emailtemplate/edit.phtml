@@ -1,0 +1,104 @@
+<style>
+    fieldset {
+        margin: 10px 0;
+        padding: 10px;
+        border-top: 1px solid #D7D7D7;
+        border-right: 1px solid #CCCCCC;
+        border-bottom: 1px solid #CCCCCC;
+        border-left: 1px solid #D7D7D7;
+        background-color: #FFFFFF;
+        position: relative;
+    }
+    legend {
+        padding: 1px 5px;
+        font-family: Tahoma,arial,Verdana,Sans-serif;
+        font-size: .9em;
+        font-weight: bold;
+        color: #115098;
+        margin-top: -.4em;
+        position: relative;
+        text-transform: none;
+        line-height: 1.2em;
+        top: 0;
+        vertical-align: middle;
+        border-bottom:none;
+        width:auto !important;
+        margin-bottom:5px !important;
+    }
+    fieldset dl {
+        margin-bottom: 10px;
+        font-size: 0.85em;
+    }
+    fieldset dt {
+        width: 20%;
+        text-align: left;
+        border: none;
+        padding-top: 3px;
+        float: left;
+    }
+    fieldset dd {
+        margin: 0 0 0 20%;
+        padding: 0 0 0 5px;
+        border: none;
+        border-left: 1px solid #CCCCCC;
+        vertical-align: top;
+        font-size: 1.00em;
+    }
+
+    .tbl-grid {
+        border-collapse: collapse;
+    }
+    tabbable table {
+        width: 100%;
+        border: 1px solid #CCCFD3;
+        background-color: #FFFFFF;
+        padding: 1px;
+    }
+    .tbl-grid tr td {
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+    .row1 {
+        background-color: #F9F9F9;
+    }
+    .row2 {
+        background-color: #DCEBFE;
+    }
+
+</style>
+
+<h2 style="font-size: 16px;font-weight: bold;"><a href="javascript:void(0);">Quản lý sự kiện</a> » <a href="/admin/emailtemplate">Thiết lập mẫu thư mời sự kiện</a> » <a href="/admin/emailtemplate/edit/<?php $this->id?>">Chỉnh/Sửa Email Template</a></h2>
+<hr style="width:100%;clear:both;"/>
+
+<form id="edititem" method="post" action="/admin/emailtemplate/save" enctype="multipart/form-data" class="validate-form">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <fieldset>
+            <legend>Thông tin cơ bản(*):</legend>
+            <table style="width:100%;">
+                <tr>
+                    <td style="width: 3%;"><label for="txtTieude" style="font-weight:bold;">Tiêu đề(*):</label></td>
+                    <td><input style="width: 99%;" class="form-control" required name="txtTieude" value="<?php echo $this->title?>" type="text">
+                        <input name="txtID" value="<?php echo $this->id?>" type="hidden">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="width: 30%;padding: 5px 0;"><label style="font-weight:bold;">Nội dung:</label></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding: 5px 0;">
+                        <textarea name="txtNoidung"><?php echo $this->contents?></textarea>
+                        <script>
+                            CKEDITOR.replace( 'txtNoidung' );
+                        </script>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+
+    <div class="submit-buttons">
+        <p style="text-align:right;margin-right:10px;"><input style="cursor: pointer !important;" class="btn btn-primary" id="submit" name="update" value="Chấp nhận" type="submit">
+            <input value="Insert" name="submit" type="hidden"></p>
+    </div>
+</form>
+

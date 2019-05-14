@@ -1,3 +1,22 @@
+<script type="text/javascript" src="http://qr.hoabinhtourist.com/public/js/qrcode.min.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        onReady();
+    };
+
+    function onReady()
+    {
+        var textqr=$('#txtQr').val();
+        var qrcode = new QRCode("id_qrcode", {
+            text:textqr,
+            width:150,
+            height:150,
+            colorDark:"#000000",
+            colorLight:"#ffffff",
+            correctLevel:QRCode.CorrectLevel.H
+        });
+    }
+</script>
 <style>
 fieldset {
     margin: 10px 0;
@@ -67,22 +86,22 @@ tabbable table {
 
 </style>
 
-<h2 style="font-size: 16px;font-weight: bold;">Khai báo danh mục » Danh mục khách mời » Danh sách khách mời » Thêm mới</h2>
+<h2 style="font-size: 16px;font-weight: bold;"><a href="/<?=ADMIN?>/invitee/">Khai báo danh mục</a> » <a href="/<?=ADMIN?>/invitee/">Danh mục khách mời</a> » <a href="/<?=ADMIN?>/invitee/create">Thêm mới</a></h2>
 <hr style="width:100%;clear:both;"/>
 
-<form id="edititem" method="post" action="/admin/events/create2" enctype="multipart/form-data" class="validate-form">
+<form id="edititem" method="post" action="/admin/invitee/create2" enctype="multipart/form-data" class="validate-form">
 <div class="col-md-6 col-sm-6 col-xs-12">
-<fieldset>
+<fieldset style="padding-bottom: 86px;">
     <legend>Thông tin cơ bản(*):</legend>
 	<table style="width:100%;">
         <tr>
             <td style="width: 30%;"><label for="txtTensukien" style="font-weight:bold;">Chức danh:</label></td>
             <td>
             <select id="ddlChucdanh" name="ddlChucdanh" style="width: 99%;">
-                <option value="1">Mr</option>
-                <option value="2">Mrs</option>
-                <option value="3">Dr.</option>
-                <option value="4">Prof</option>
+                <option value="Mr">Mr</option>
+                <option value="Mrs">Mrs</option>
+                <option value="Dr.">Dr.</option>
+                <option value="Prof">Prof</option>
             </select>
             </td>
         </tr>
@@ -99,7 +118,7 @@ tabbable table {
             <td><input style="width: 99%;margin:10px 0 0 0;" required class="form-control" name="txtDidong" value="" maxlength="255" type="text"></td>
         </tr>
         <tr>
-            <td style="width: 30%;"><label for="txtEmail" style="font-weight:bold;">Email:</label></td>
+            <td style="width: 30%;"><label for="txtEmail" style="font-weight:bold;">Email (*):</label></td>
             <td><input style="width: 99%;margin:10px 0 0 0;" required class="form-control" name="txtEmail" value="" maxlength="255" type="text"></td>
         </tr>
 
@@ -122,16 +141,48 @@ tabbable table {
         </tr>
 	<tr>
 	<td style="width: 30%;"><label for="ddlChucvu" style="font-weight:bold;">Chức vụ:</label></td>
-	<td><input style="width: 99%;margin-top: 10px;" class="form-control" name="ddlChucvu" value="" maxlength="255" type="text"></td>
+	<td>
+        <select style="width: 99%;margin-top: 10px;" class="form-control" id="ddlChucvu" name="ddlChucvu">
+            <?php if (count($this->position) > 0) {?>
+                <?php
+                foreach($this->position as $val1):
+                    ?>
+                    <option value="<?php echo $val1['id']; ?>"><?php echo $val1['name']; ?></option>
+                <?php endforeach; }?>
+        </select>
+
+    </td>
 	</tr>
         <tr>
             <td style="width: 30%;"><label for="ddlLoaiKhachmoi" style="font-weight:bold;">Loại khách mời:</label></td>
-            <td><input style="width: 99%;margin-top: 10px;" class="form-control" name="ddlLoaiKhachmoi" value="" maxlength="255" type="text"></td>
+            <td>
+                <select style="width: 99%;margin-top: 10px;" class="form-control" id="ddlLoaiKhachmoi" name="ddlLoaiKhachmoi">
+                    <?php if (count($this->invitee_type) > 0) {?>
+                    <?php
+                    foreach($this->invitee_type as $val):
+                    ?>
+                    <option value="<?php echo $val['id']; ?>"><?php echo $val['name']; ?></option>
+                    <?php endforeach; }?>
+                </select>
+                </td>
         </tr>
+
+
         <tr>
             <td style="width: 30%;"><label for="ddlSukien" style="font-weight:bold;">Sự kiện:</label></td>
             <td><input style="width: 99%;margin-top: 10px;" class="form-control" name="ddlSukien" value="" maxlength="255" type="text"></td>
         </tr>
+
+        <tr>
+            <td style="width: 30%;vertical-align: top;">
+                <label for="ddlSukien" style="font-weight:bold;">Qr code:</label>
+            </td>
+            <td style="width: 99%;margin-bottom: 10px;">
+                <input type="hidden" id="txtQr" name="txtQr" value="<?php echo $this->qrcode;?>"/>
+                <div style="width: 99%;margin-top: 10px;" id="id_qrcode" name="id_qrcode"></div>
+            </td>
+        </tr>
+
 	</table>
 </fieldset>
 </div>

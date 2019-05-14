@@ -67,7 +67,7 @@ tabbable table {
 
 </style>
 
-<h2 style="font-size: 16px;font-weight: bold;">Khai báo danh mục » Danh mục chức vụ » Danh sách chức vụ » Thêm mới</h2>
+<h2 style="font-size: 16px;font-weight: bold;"><a href="/<?=ADMIN?>/position">Khai báo danh mục</a> » <a href="/<?=ADMIN?>/position">Danh mục chức vụ</a> » <a href="/<?=ADMIN?>/position/create">Thêm mới</a></h2>
 <hr style="width:100%;clear:both;"/>
 
 <form id="edititem" method="post" action="/admin/position/create2" enctype="multipart/form-data" class="validate-form">
@@ -87,7 +87,7 @@ tabbable table {
 	</tr>
         <tr>
             <td style="width: 30%;"><label for="txtThutu" style="font-weight:bold;">Thứ tự:</label></td>
-            <td><input style="width: 30%;margin-top: 10px;" class="form-control" required name="txtThutu" value="" type="number"></td>
+            <td><input style="width: 30%;margin-top: 10px;" class="form-control" min="0" required name="txtThutu" value="" type="number"></td>
         </tr>
         <tr>
             <td>&nbsp;</td>

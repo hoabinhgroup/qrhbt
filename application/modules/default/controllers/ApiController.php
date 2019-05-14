@@ -85,6 +85,8 @@ class ApiController extends Louis_Controller_Action{
 			
 	}
 	
+	
+	
 	function loginAction(){
 		$this->_helper->viewRenderer->setNoRender(true);
 		 $this->_helper->layout->disableLayout();
@@ -162,7 +164,7 @@ class ApiController extends Louis_Controller_Action{
 		 
 		$data = json_decode(file_get_contents("php://input"));
 		$code = $data->code;
-		$mdlStaff = new Model_Staff();
+		$mdlStaff = new Model_Invitee();
 		$updated = $mdlStaff->update_where(array(
 			'checkedIn' => 1
 		), array('code' => $code));
@@ -182,9 +184,9 @@ class ApiController extends Louis_Controller_Action{
 		 
 		$data = json_decode(file_get_contents("php://input"));
 		$code = $data->code;
-		$mdlStaff = new Model_Staff();
+		$mdlStaff = new Model_Invitee();
 		$updated = $mdlStaff->update_where(array(
-			'printStatus' => 1
+			'print' => 1
 		), array('code' => $code));
 		
 		$status = $mdlStaff->get_one_where(array('code' => $code));
@@ -205,10 +207,11 @@ class ApiController extends Louis_Controller_Action{
 		$registered = 0;
 		$checkedIn = 0;
 		$paid = 0;
-		$mdlStaff = new Model_Staff();
-		$registered = $mdlStaff->getStatus(array('registered' => true, 'event_id' => $event_id));
-		$checkedIn = $mdlStaff->getStatus(array('checkedIn' => true, 'event_id' => $event_id));
-		$paid = $mdlStaff->getStatus(array('paid' => true, 'event_id' => $event_id));
+		$mdlInvitee = new Model_Invitee();
+		$registered = $mdlInvitee->getStatus(array('registered' => true, 'event_id' => $event_id));
+		
+		$checkedIn = $mdlInvitee->getStatus(array('checkedIn' => true, 'event_id' => $event_id));
+		$paid = $mdlInvitee->getStatus(array('paid' => true, 'event_id' => $event_id));
 		
 		$status = array(
 			'registered' => $registered,
@@ -217,5 +220,30 @@ class ApiController extends Louis_Controller_Action{
 		);
 		
 		$this->_helper->json(array('success' => true, 'data' => $status));
+	}
+	
+	function test2Action(){
+		require_once(APPLICATION_PATH . '/../library/PHPExcel.php');	
+		 $this->_helper->viewRenderer->setNoRender(true);
+		 $this->_helper->layout->disableLayout();
+		 $objPHPExcel = PHPExcel_IOFactory::load(APPLICATION_PATH . '/../public/files/Vsem2019.xls');
+		 		  $provinceSheet = $objPHPExcel->setActiveSheetIndex(0);
+		  $worksheet = $objPHPExcel->getActiveSheet();
+		  $rows = [];
+		  foreach ($worksheet->getRowIterator() AS $row) {
+		  $cellIterator = $row->getCellIterator();
+		  $cellIterator->setIterateOnlyExistingCells(FALSE); // This loops through all cells,
+		  $cells = [];
+		  foreach ($cellIterator as $cell) {
+		  $cells[] = $cell->getValue();
+
+    		}
+			$rows[] = $cells;
+			unset($rows[0]);
+			}
+		echo "<pre>";
+		print_r($rows);
+		echo "</pre>";	
+
 	}
 }

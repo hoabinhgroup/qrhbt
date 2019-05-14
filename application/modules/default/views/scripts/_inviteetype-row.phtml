@@ -1,20 +1,17 @@
 ﻿<tr>
 	<td class="center">
-			<label>
-			<input type="checkbox" class="ace" />
-			<span class="lbl"></span>
-			</label>
+        <?php echo $this->id;?>
 	</td>
     
     <td width="25%"><b>
-	<a class="green" target="_blank" href='/<?=ADMIN?>/inviteetype/edit/id/<?php echo $this->id;?>'>
+	<a class="green" href='/<?=ADMIN?>/inviteetype/edit/id/<?php echo $this->id;?>'>
 	<?php echo $this->name; ?>
 	</a>
 	</b></td>
     <td><?php echo $this->notes; ?></td>
-    <td><?php echo $this->create_date; ?></td>
-	<td>
-	<a href="/<?=ADMIN?>/inviteetype/edit/id/<?php echo $this->id;?>"><img src="/public/images/icon_edit.gif" alt="Sửa" title="Sửa nội dung này"></a>
-	<a onclick="return confirm('Bạn muốn xóa?');"  href="/<?=ADMIN?>/inviteetype/delete/id/<?php echo $this->id;?>" ><img title="Xóa" alt="Xóa" src="/public/images/icon_delete.gif"></a>
+    <td style="vertical-align: middle;text-align: center;"><?php echo date("d/m/Y", $this->create_date); ?></td>
+	<td style="vertical-align: middle;text-align: center;">
+	<a href="/<?=ADMIN?>/inviteetype/edit/id/<?php echo $this->id;?>"><i class="fa fa-cog" title="Sửa nội dung này" aria-hidden="true"></i> Sửa</a>
+	<a onclick="return confirm('Bạn muốn xóa?');"  href="/<?=ADMIN?>/inviteetype/delete/id/<?php echo $this->id;?>" ><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
 	</td>
 </tr>

@@ -1,0 +1,113 @@
+
+<script type="text/javascript">
+    window.onload = function () {
+        $("#checkin").focus();
+        //setInterval(function(){ fnAutoCheckin(); }, 100);
+        //setInterval(fnAutoCheckin, 1000);
+    };
+
+    function fnAutoCheckin(){
+        $.ajax({
+            type: "POST",
+            url: "http://qr.hoabinhtourist.com/admin/checkin/checkinauto",
+            data: "txtMatheEdit=" + $("#checkin").val(),
+            dataType: "html",
+            success: function(html){
+                if(html!='0'){
+                    $('#print').html(html);
+                    fnPrint();
+                }
+            }
+        });
+    }
+
+    function Search(){
+        //alert($('#checkin').val());
+        $.getJSON("http://qr.hoabinhtourist.com/admin/checkin/checkinqrcode", "txtMatheEdit=" + $("#checkin").val(), function (msg) {
+                if (msg.errCode == "0") {
+                    $('#myModal').modal('show');
+                    //alert(msg.contactMsg);
+                    //Search();
+                }
+            }
+        );
+    }
+    function fnPrint() {
+        //
+        $(document).ready(function () {
+            $("#print").print();
+        });
+    }
+</script>
+
+	<div class="row">
+
+									<div class="col-xs-12">
+										<h3 class="header smaller lighter blue">Quản lý sự kiện » Checkin sự kiện tự động</h3>
+
+										<div class="table-responsive">
+											<table id="table_events" class="table table-striped table-bordered table-hover">
+												<!--
+												<thead>
+													<tr>
+
+														<th>STT</th>
+														<th>Tên sự kiện</th>
+                                                        <th>Ngày bắt đầu</th>
+                                                        <th>Ngày kết thúc</th>
+                                                        <th>Địa điểm tổ chức hội nghị</th>
+														<th>Action</th>
+													</tr>
+												</thead>
+												-->
+
+												<tbody>
+                                                <tr>
+                                                    <td style="text-align: center;vertical-align: middle;">
+                                                        <h2 style="text-align: center;vertical-align: middle;color: red;">MỜI QUÝ KHÁCH QUÉT MÃ QR CODE</h2>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align: center;vertical-align: middle;">
+                                                        <input type="text" onkeydown="fnAutoCheckin()" id="checkin" name="checkin" value="" class="form-control" />
+                                                    </td>
+                                                </tr>
+												</tbody>
+											</table>
+											
+										</div>
+										
+									</div>
+    </div>
+
+<div id="print">
+</div>
+
+<!-- Central Modal Large Info-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-notify modal-info" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <b>THÔNG TIN ĐẠI BIỂU</b>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <div class="entry-content">
+                    FTTFLD
+                </div>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer" style="clear: both;" id="register_process">
+                <input type="button" value="Close" class="btn btn-outline-info waves-effect" data-dismiss="modal">
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!-- Central Modal Large Info-->

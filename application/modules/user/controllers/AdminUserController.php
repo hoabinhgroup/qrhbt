@@ -29,6 +29,7 @@ class User_AdminUserController extends Louis_Controller_Action
     }
     public function loginAction()
     {
+
         // set layout cho trang login
         $option=array(
             "layout" => "login",
@@ -36,6 +37,9 @@ class User_AdminUserController extends Louis_Controller_Action
         );
         Zend_Layout::startMvc($option);
         try {
+            $mdlevents = new Model_Events();
+            $this->view->events=$events = $mdlevents->get_details();
+
             // $userForm = new User_Form_User();
             // $userForm->setAction('/admin/user/login');
             // $userForm->removeElement('first_name');
@@ -48,7 +52,7 @@ class User_AdminUserController extends Louis_Controller_Action
                 $data = $this->getRequest()->getPost();
 
                // Zend_Debug::dump($data);
-                //die();
+               //die();
 
                 $db = Zend_Db_Table::getDefaultAdapter();
 
@@ -58,31 +62,38 @@ class User_AdminUserController extends Louis_Controller_Action
                 $authAdapter->setIdentity($data['username']);
                 $authAdapter->setCredential(md5($data['password']));
 
-                $result = $authAdapter->authenticate();
-                if ($result->isValid()) {
+                if ($data['eventlist']!='0'){
+                    $_SESSION["eventid"]=$data['eventlist'];
+                    $result = $authAdapter->authenticate();
+                    if ($result->isValid()) {
 
-                    $auth = Zend_Auth::getInstance();
-                    //luu dada vao session
-                    $storage = $auth->getStorage();
-                    $storage->write($authAdapter->getResultRowObject(
-                        array('id','username' , 'first_name' , 'last_name', 'group_id')));
-                    // $storage->write(v);
-                    //  $akey = new stdClass();
-                    $user = new User_Model_User();
-                    $key_sercurity = md5($data['password'].$user->randomString());
-                    $_SESSION['akey'] = $key_sercurity;
+                        $auth = Zend_Auth::getInstance();
+                        //luu dada vao session
+                        $storage = $auth->getStorage();
+                        $storage->write($authAdapter->getResultRowObject(
+                            array('id','username' , 'first_name' , 'last_name', 'group_id')));
+                        // $storage->write(v);
+                        //  $akey = new stdClass();
+                        $user = new User_Model_User();
+                        $key_sercurity = md5($data['password'].$user->randomString());
+                        $_SESSION['akey'] = $key_sercurity;
 
-                    $info = new Louis_System_Info();
-                    $info->createInfo();
+                        $info = new Louis_System_Info();
+                        $info->createInfo();
 
-                    $identity = $auth->getIdentity()->id;
-                    $this->_user_model->update_where(array('last_online' => time()), array('id' => $identity));
+                        $identity = $auth->getIdentity()->id;
+                        $this->_user_model->update_where(array('last_online' => time()), array('id' => $identity));
 
 
-                    return $this->_redirect('/admin');
-                } else {
-                    $this->view->loginMessage = "Xin lỗi, username hoặc mật khẩu không chính xác!";
+                        return $this->_redirect('/admin');
+                    } else {
+                        $this->view->loginMessage = "Xin lỗi, username hoặc mật khẩu không chính xác!";
+                    }
+                }else{
+                    $this->view->loginMessage = "Vui lòng lựa chọn hội nghị";
                 }
+
+
 
 
             }

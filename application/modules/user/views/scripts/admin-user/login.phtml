@@ -23,7 +23,12 @@
 														<span class="block input-icon input-icon-right">
 														<select class="form-control" name="eventlist" id="eventlist">
 														<option value="0">- Lựa chọn hội nghị -</option>
-														<option value="1">Hội nghị diễn đàn doanh nghiệp 2019</option>
+														<?php if (count($this->events) > 0) {?>
+                                                            <?php
+                                                            foreach($this->events as $val1):
+                                                                ?>
+                                                                <option value="<?php echo $val1['id']; ?>"><?php echo $val1['eventname']; ?></option>
+                                                            <?php endforeach; }?>
 														</select>
 														</span>
 													</label>

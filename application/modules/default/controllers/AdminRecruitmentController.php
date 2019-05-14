@@ -22,7 +22,7 @@ class AdminRecruitmentController extends Louis_Controller_Action
 		public function createAction()
 		{
 			
-		$this->view->headScript()->appendFile('/public/scripts/ckeditor/ckeditor.js');	
+		$this->view->headScript()->appendFile('http://cdn.ckeditor.com/4.11.4/standard/ckeditor.js');
 		
 		$productForm = new Form_Rec();
        // echo $this->_userID;

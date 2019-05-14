@@ -10,7 +10,7 @@ class AdminInviteetypeController extends Louis_Controller_Action
 		}
 		
 		public function indexAction(){
-			$result = $this->_rec->get_details();		
+			$result = $this->_rec->get_details();
 			$this->view->products = $result;
 		}
 		
@@ -24,31 +24,18 @@ class AdminInviteetypeController extends Louis_Controller_Action
 	
 		public function editAction() 
 		{
-			/*$id = $this->_request->getParam('id');
+			$id = $this->_request->getParam('id');
 			$options = array();
-			$mdlHotel=new Model_Hotel();
-			$mdlAccommodation = new Model_Events();
+			$mdlInviteetype=new Model_Inviteetype();
 			$options = array(
-				'hotel_id' => $id
+				'id' => $id
 			);
 
-			$hotel=$mdlHotel->get_one_where($options);
+			$Inviteetype=$mdlInviteetype->get_one_where($options);
 
-
-			$this->view->city_id = $hotel->city_id;
-			$this->view->title = $hotel->title;
-			$this->view->address = $hotel->address;
-			$this->view->website = $hotel->website;
-			$this->view->intro = $hotel->intro;
-			$this->view->content = $hotel->content;
-			$this->view->star_number = $hotel->star_number;
-			$this->view->priority = $hotel->priority;
-			$this->view->accommodation = $accommodation = $mdlAccommodation->get_details($options);*/
-			//$this->view->country_id = $hotel->country_id;
-			
-			
-			
-			
+			$this->view->id = $Inviteetype->id;
+			$this->view->name = $Inviteetype->name;
+			$this->view->notes = $Inviteetype->notes;
 			
 		}
 	public function create2Action(){				
@@ -76,30 +63,22 @@ class AdminInviteetypeController extends Louis_Controller_Action
 		public function saveAction(){
 			$this->_helper->viewRenderer->setNoRender(true);
 		    $this->_helper->layout->disableLayout();
-			
-			
-			$default_hotel=new Model_Hotel();
+
+
+			$inviteetype=new Model_Inviteetype();
 			$params = $this->_request->getParams();	
 		  
 		  $data = array(
-				'city_id' => $params['city_id'],
-				'title' => $params['title'],
-				'address' => $params['address'],
-				'website' => $params['website'],
-				'intro' => $params['intro'],
-				'content' => $params['textarea_content'],
-				'star_number' => $params['star_number'],
-				'priority' => $params['priority']
+				'name' => $params['txtTenloaikhachmoi'],
+				'txtGhichu' => $params['notes']
 				);
 		  
-		   $id=$default_hotel->update_where(
+		   $id=$inviteetype->update_where(
 				$data,
-				array('hotel_id' => $params['hotel_id'])
-				
+				array('id' => $params['hdID'])
 		   );
 		   if($id){
-			  
-			   $this->_redirect("/admin/defaulthotel");
+			   $this->_redirect("/admin/inviteetype");
 		   }
 		}
 		
@@ -111,7 +90,7 @@ class AdminInviteetypeController extends Louis_Controller_Action
 			$id = $this->_request->getParam('id');
 			
 			$this->_rec->delete_where(array('id' => $id));
-			return $this->_redirect('/admin/recruitment');
+			return $this->_redirect('/admin/inviteetype');
 	}
 	
 	

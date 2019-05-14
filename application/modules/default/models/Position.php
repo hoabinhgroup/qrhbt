@@ -26,11 +26,4 @@ class Model_Position extends Louis_Db_Table_Abstract {
     	}
 
 	
-        public function delete($id)
-	   {
-		   $delete = "delete FROM ".$this->_name." where id = $id";
-		   $this->_db->query($delete);
-		   
-		   
-	   }  
 }

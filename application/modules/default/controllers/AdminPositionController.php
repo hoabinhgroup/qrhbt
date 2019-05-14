@@ -24,32 +24,17 @@ class AdminPositionController extends Louis_Controller_Action
 	
 		public function editAction() 
 		{
-			$id = $this->_request->getParam('id');
-			$options = array();
-			$mdlHotel=new Model_Hotel();
-			$mdlAccommodation = new Model_Events();
-			$options = array(
-				'hotel_id' => $id
-			);
-			
-			$hotel=$mdlHotel->get_one_where($options);
-			
-			
-			$this->view->city_id = $hotel->city_id;
-			$this->view->title = $hotel->title;
-			$this->view->address = $hotel->address;
-			$this->view->website = $hotel->website;
-			$this->view->intro = $hotel->intro;
-			$this->view->content = $hotel->content;
-			$this->view->star_number = $hotel->star_number;
-			$this->view->priority = $hotel->priority;
-			$this->view->accommodation = $accommodation = $mdlAccommodation->get_details($options);
-			//$this->view->country_id = $hotel->country_id;
-			
-			
-			
-			
-			
+            $id = $this->_request->getParam('id');
+            $options = array();
+            $mdlPosition=new Model_Position();
+            $options = array(
+                'id' => $id
+            );
+            $position=$mdlPosition->get_one_where($options);
+            $this->view->id = $position->id;
+            $this->view->name = $position->name;
+            $this->view->notes = $position->notes;
+            $this->view->orders = $position->orders;
 		}
 	public function create2Action(){				
 			$this->_helper->viewRenderer->setNoRender(true);
@@ -78,31 +63,24 @@ class AdminPositionController extends Louis_Controller_Action
 		public function saveAction(){
 			$this->_helper->viewRenderer->setNoRender(true);
 		    $this->_helper->layout->disableLayout();
-			
-			
-			$default_hotel=new Model_Hotel();
-			$params = $this->_request->getParams();	
-		  
-		  $data = array(
-				'city_id' => $params['city_id'],
-				'title' => $params['title'],
-				'address' => $params['address'],
-				'website' => $params['website'],
-				'intro' => $params['intro'],
-				'content' => $params['textarea_content'],
-				'star_number' => $params['star_number'],
-				'priority' => $params['priority']
-				);
-		  
-		   $id=$default_hotel->update_where(
-				$data,
-				array('hotel_id' => $params['hotel_id'])
-				
-		   );
-		   if($id){
-			  
-			   $this->_redirect("/admin/defaulthotel");
-		   }
+
+            $position=new Model_Position();
+            $params = $this->_request->getParams();
+
+            $data = array(
+                'name' => $params['txtTenchucvu'],
+                'orders' => $params['txtThutu'],
+                'notes' => $params['txtGhichu']
+            );
+
+            $id=$position->update_where(
+                $data,
+                array('id' => $params['hdID'])
+
+            );
+            if($id){
+                $this->_redirect("/admin/position");
+            }
 		}
 		
 	
@@ -113,7 +91,7 @@ class AdminPositionController extends Louis_Controller_Action
 			$id = $this->_request->getParam('id');
 			
 			$this->_rec->delete_where(array('id' => $id));
-			return $this->_redirect('/admin/recruitment');
+			return $this->_redirect('/admin/position');
 	}
 	
 	
